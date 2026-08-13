@@ -142,6 +142,32 @@ nota3 = ws3.cell(row=ws3.max_row + 1, column=1, value=(
 ))
 nota3.font = NOTE_FONT
 
+# ============ HOJA 4: RESPONSABLES ============
+ws4 = wb.create_sheet("Responsables")
+headers4 = ["area", "etiqueta_responsable", "nombre_responsable"]
+ws4.append(headers4)
+style_header(ws4, ncols=len(headers4))
+
+responsables_rows = [
+    ["Farmacia Corporativa", "JEFE", "ALEJANDRO IZQUIERDO"],
+    ["Contabilidad", "A CARGO", "ROBERTO DIAZ"],
+    ["Sistemas", "JEFATURA", "STEFAN MANDUJANO"],
+    ["CSO", "JEFE", "GIANNINA DOMINGUEZ"],
+]
+for row in responsables_rows:
+    ws4.append(row)
+
+widths4 = [22, 18, 24]
+for i, w in enumerate(widths4, start=1):
+    ws4.column_dimensions[openpyxl.utils.get_column_letter(i)].width = w
+
+ws4.append([])
+nota4 = ws4.cell(row=ws4.max_row + 1, column=1, value=(
+    "Nota: al elegir un area en el wizard, se sugiere automaticamente el responsable de esta "
+    "tabla (editable en el momento). Si el area no esta aqui, el wizard pide los datos a mano."
+))
+nota4.font = NOTE_FONT
+
 RUTA_SALIDA.parent.mkdir(parents=True, exist_ok=True)
 wb.save(str(RUTA_SALIDA))
 print(f"Intake creado en {RUTA_SALIDA}")

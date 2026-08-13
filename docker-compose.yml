@@ -1,0 +1,14 @@
+services:
+  informes-api:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    container_name: informes-api
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - INFORMES_API_KEY=${INFORMES_API_KEY}
+    volumes:
+      - ./data:/app/data
+      - ${RUTA_CARPETA_NAS_INFORMES}:/app/nas_output

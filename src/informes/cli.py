@@ -43,12 +43,12 @@ def comando_buscar(args):
         for fila in resultados:
             print(
                 f"{fila['id_tramite']:<12} N.{fila['numero_informe']:>3}-{fila['anio']}  "
-                f"{fila['tipo_tramite']:<15} {fila['tecnico_nombre']:<25} "
-                f"{fila['area'] or '':<20} {fila['fecha']}"
+                f"{fila['tipo_tramite']:<15} {fila['tipo_bien'] or '':<15} "
+                f"{fila['tecnico_nombre']:<25} {fila['area'] or '':<20} {fila['fecha']}"
             )
-            equipos = db.equipos_de_tramite(conn, fila["id_tramite"])
-            for eq in equipos:
-                print(f"    -> {eq['usuario']} | {eq['tipo_bien']} | {eq['serie'] or 's/serie'}")
+            for eq in db.equipos_de_tramite(conn, fila["id_tramite"]):
+                detalle = {k: v for k, v in eq.items() if k not in ("id", "serie") and v}
+                print(f"    -> serie={eq['serie'] or 's/serie'} {detalle}")
             if fila["ruta_nas"]:
                 print(f"    NAS: {fila['ruta_nas']}")
     return 0
