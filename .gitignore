@@ -1,0 +1,30 @@
+# Entorno virtual
+venv/
+.venv/
+env/
+
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+
+# Salidas generadas (no versionar informes reales de usuarios/equipos)
+salida/*
+!salida/.gitkeep
+
+# Intake con datos reales (si vas a usar este repo con datos de produccion,
+# excluye el archivo real y deja solo un intake de ejemplo versionado)
+# intake/intake_informes.xlsx
+
+# Datos locales / sensibles (no versionar)
+informes.db
+perfil_local.json
+
+# Editor / SO
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Archivos temporales de LibreOffice al verificar docx -> pdf
+*.pdf
+page-*.jpg

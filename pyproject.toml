@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "informes"
+version = "0.1.0"
+description = "Generador automatico de informes tecnicos de TI (implementacion, baja, diagnostico)."
+requires-python = ">=3.10"
+dependencies = [
+    "pandas>=2.0",
+    "openpyxl>=3.1",
+    "docxtpl>=0.20",
+    "python-docx>=1.1",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
